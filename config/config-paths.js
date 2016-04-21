@@ -20,7 +20,7 @@ module.exports = new function () {
 			return this.img + '/data-uri';
 		},
 		get styles() {
-			return this.root + '/styles/';
+			return this.root + '/styles';
 		},
 		get scripts() {
 			return this.root + '/scripts';
@@ -39,6 +39,9 @@ module.exports = new function () {
 		},
 		get blocks() {
 			return this.markups + '/blocks';
+		},
+		get components() {
+			return this.markups + '/components';
 		}
 	};
 	// destination
