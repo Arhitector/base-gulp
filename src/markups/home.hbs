@@ -1,24 +1,44 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Document</title>
-    </head>
-    <body>
-    <script>
-        var title = 'some new titlte';
-        window.comments = {
-            'c1':'c1',
-            'c2':'c1',
-            'c3':'c1',
-            'c4':'c1'
-        }
-    </script>
-        <h1>{{@file.path}}</h1>
-        {{> blocks/title/title}}
-        {{> modules/footer/footer}}
-        {{#if 1}}
-            <h4>true</h4>
-        {{/if}}
-    </body>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var title = 'some new titlte';
+		window.comments = {
+			'c1': 'c1',
+			'c2': 'c1',
+			'c3': 'c1',
+			'c4': 'c1'
+		}
+	</script>
+	<script id="entry-template" type="text/x-handlebars-template">
+		<div class="entry">
+			<h1>{{title}}</h1>
+			<div class="body">
+				{{body}}
+			</div>
+		</div>
+	</script>
+	<script>
+		var source = $("#entry-template").html();
+		var template = Handlebars.compile(source);
+	</script>
+	<h1>{{@file.path}}</h1>
+	{{> blocks/title/title second="second title"}}
+	{{> modules/footer/footer}}
+	<foo>{{compare 3 4}}</foo>
+	{{#each home.parse}}
+		<div>{{item}}</div>
+	{{/each}}
+	<bar>{{home.boom}}</bar>
+	{{#if 1}}
+		<h4>true</h4>
+	{{else}}
+		<h4>false</h4>
+	{{/if}}
+	<img src="{{@root.fsFile}}/img.png" alt="">
+</body>
 </html>

@@ -9,7 +9,6 @@ module.exports = new function () {
 		postcss = require('gulp-postcss'),
 		cssnext = require('postcss-cssnext'),
 		csso = require('gulp-csso'),
-		rename = require('gulp-rename'),
 		gulpIf = require('gulp-if'),
 		base64 = require('gulp-base64-inline');
 

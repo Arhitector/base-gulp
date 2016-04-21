@@ -15,6 +15,7 @@ global.fs           = require('fs');
 global.notify       = require('gulp-notify');
 global.size         = require('gulp-size');
 global.plumber      = require('gulp-plumber');
+global.rename = require("gulp-rename");
 
 //config
 global.configLoader = require('./config/config-loader');

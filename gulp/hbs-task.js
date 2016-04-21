@@ -1,38 +1,24 @@
 module.exports = new function () {
-    var handlebars = require('handlebars');
-
-        // hbs         = require('gulp-hbs'),
-        var hb = require('gulp-hb');
-
-        rename = require("gulp-rename");
+    var handlebars = require('handlebars'),
+        hb = require('gulp-hb');
+        
 	return function () {
-        // var gulpHandlebars = require('gulp-compile-handlebars');
-        // var options = {
-        //         partialsDirectory : [cfg.src.modules, cfg.src.blocks]
-        //     };
-        //
+		hbsHelpers = require('./lib/hbs-helpers');
         return gulp.src(cfg.src.markups + '/*.hbs')
-        // .pipe(gulpHandlebars({firstName: 'Kaanon'}, options))
+		.pipe(plumber({
+			errorHandler: function (err) {
+				console.log(err.plugin);
+				console.log(err.message);
+				this.emit('end');
+			}
+		}))
         .pipe(hb({})
             .partials(cfg.src.markups + '/**/*.hbs')
-            .helpers({
-                foo: function () { return 4; },
-                bar: function () { return 2345; }
-            })
-            .data({
-                cssPath: cfg.destTemplate.cssPath,
-                imgPath: cfg.destTemplate.imgPath,
-                tempPath: cfg.destTemplate.tempPath,
-                imageSprites: cfg.destTemplate.imageSprites,
-                blocksPath: cfg.destTemplate.blocksPath,
-                modulesPath: cfg.destTemplate.modulePath
-            })
+            .helpers(hbsHelpers)
+            .data(cfg.destTemplate)
+			.data(cfg.src.markups + '/**/*.json')
         )
-        // .pipe(hb({
-        //     helpers: './src/blocks/**/*.hbs',
-        //     data: './src/modules/**/*.hbs'
-        // }))
         .pipe(rename({extname: ".html"}))
-		.pipe(gulp.dest(cfg.dest.html))
+		.pipe(gulp.dest(cfg.dest.html));
 	};
 };
