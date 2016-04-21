@@ -1,37 +1,31 @@
 module.exports = new function (callback) {
 	var webpackStream		= require('webpack-stream'),
-		webpack				= webpackStream.webpack;
+		webpack				= webpackStream.webpack,
 		named				= require('vinyl-named');
-	if (args.env == 'dev') {
-		var isDev = true;
-	} else {
-		var isDev = false;
-	}
-	var biuldWEbpack = false;
+	var biuldWebpack = false;
 	function done(err, stats) {
-		var biuldWEbpack = true;
+		var biuldWebpack = true;
 		if (err) {
-			return err;
+			return console.log(err);
 		};
-		// gulplog[stats.hasErorrs() ? 'error' : 'info'](stats.toString({
-		// 	colors: true
-		// }));
 	}
 	var options = {
 		//- watch
-		watch: isDev,
+		// watch: cfg.isDev,
 		//- sourcemap
-		devtool: args.env == 'dev' ? 'source-map' : null,
+		devtool: cfg.isDev ? 'source-map' : null,
 
 		module: {
-			loaders: [{
-				test: /\.js$/,
-				include: [
-					__dirname + "/src/scripts",
-					__dirname + "/src/markups"
-				],
-				loader: 'babel?presets[]=es2015'
-			}]
+			loaders: [
+				{
+					test: /\.js$/,
+					include: [
+						__dirname + "/src/scripts",
+						__dirname + "/src/markups"
+					],
+					loader: 'babel?presets[]=es2015'
+				}
+			]
 		},
 
 		plugins: [
@@ -43,7 +37,7 @@ module.exports = new function (callback) {
 		]
 	};
 	return function () {
-		return gulp.src(cfg.src.markups + '/*.js')
+		return gulp.src(cfg.src.markups + '/*.' + JS_FORMATS)
 			.pipe(plumber({
 				errorHandler: function (err) {
 					console.log(err.plugin);
@@ -52,11 +46,10 @@ module.exports = new function (callback) {
 				}
 			}))
 			.pipe(named())
-			.pipe(webpackStream(options, null, done))
+			.pipe(webpackStream(options, "", done()))
 			.pipe(gulp.dest(cfg.dest.scripts))
 			.on('data', function () {
-				if(biuldWEbpack && !callback.called) {
-					callback.called = true;
+				if(biuldWebpack) {
 					callback();
 				}
 			});
