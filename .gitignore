@@ -1,0 +1,26 @@
+#
+# Mac OS
+#
+.DS_Store
+.DS_Store?
+.Spotlight-V100
+.Trashes
+
+#
+# Windows
+#
+ehthumbs.db
+Thumbs.db
+
+/bower_components/*
+/node_modules/*
+/www/*
+npm-debug.log
+.sass-cache/*
+/tests
+/temp
+*.psd
+*.cache
+.idea/*
+*.sublime-project
+.editorconfig

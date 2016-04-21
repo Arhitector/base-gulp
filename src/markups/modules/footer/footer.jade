@@ -1,0 +1,31 @@
+.m-footer
+    .m-footer__line
+    .m-footer__title #{footer.titles}
+    .swiper-container.js-swiper-footer
+        .swiper-wrapper
+            .swiper-slide.s-add-slide
+                .s-add
+                .s-invite.t-text-yellow Пригласить друга
+            each item in footer.carousel
+                .swiper-slide
+                    case item.status
+                        when "offline"
+                            .s-offline
+                            .s-status.t-text-brown2 оффлайн
+                        when "online"
+                            .s-online
+                            .s-status.t-bg-green онлайн
+                        when "playing"
+                            .s-playing
+                            .s-status.t-bg-yellow в игре
+                    .s-name #{item.name}
+                    .s-hover
+                        .btn-orange-fill.btn-32 играть
+                        .btn-orange-fill.btn-32 Подарок
+                        .btn-orange-fill.btn-32 Сообщение
+
+    .u-arrow-left.js-prev
+    .u-arrow-right.js-next
+    .m-footer__line @@#!@$
+if isDev
+    script(src='modules/footer/footer.js')

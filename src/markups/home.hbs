@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+    </head>
+    <body>
+    <script>
+        var title = 'some new titlte';
+        window.comments = {
+            'c1':'c1',
+            'c2':'c1',
+            'c3':'c1',
+            'c4':'c1'
+        }
+    </script>
+        <h1>{{@file.path}}</h1>
+        {{> blocks/title/title}}
+        {{> modules/footer/footer}}
+        {{#if 1}}
+            <h4>true</h4>
+        {{/if}}
+    </body>
+</html>

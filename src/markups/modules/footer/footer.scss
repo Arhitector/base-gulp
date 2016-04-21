@@ -1,0 +1,99 @@
+$footer-img-path: '#{$modules-path}/footer/images/';
+.m-footer {
+    height: 168px;
+    position: relative;
+    background: url('#{$img-path}/pattern.jpg') 0 0 repeat;
+    overflow: hidden;
+    &__line {
+        width: 100%;
+        height: 2px;
+        box-sizing: border-box;
+        position: absolute;
+        top: 0;
+        & ~ .m-footer__line {
+            top: auto;
+            bottom: 0;
+        }
+    }
+    &__title {
+        background: url('#{$footer-img-path}/bg-title.png') 0 0 no-repeat;
+        width: 415px;
+        height: 28px;
+        margin: 0 auto;
+        text-align: center;
+        position: relative;
+        z-index: 10;
+    }
+    .swiper {
+        &-container {
+            margin: 0 45px;
+            position: relative;
+            z-index: 10;
+        }
+        &-wrapper {
+
+            &::after {
+                content: "";
+                clear: both;
+                display: block;
+            }
+        }
+        &-slide {
+            position: relative;
+            float: left;
+            width: 88px;
+            height: 135px;
+            padding: 3px 4px;
+            background: url('#{$footer-img-path}/bg-slide.jpg') 0 0 no-repeat;
+            box-sizing: border-box;
+            border-radius: 5px;
+            &:not(:last-child) {
+                margin-right: 14px;
+            }
+            &:hover {
+                .s-hover {
+                    display: flex;
+                }
+            }
+        }
+    }
+    .s-add-slide {
+        &:hover {
+            &:before {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                top: 0;
+                border-radius: 5px;
+                mix-blend-mode: overlay;
+            }
+        }
+        &:active {
+            &:before {
+                display: none;
+            }
+            .s-add {
+                margin: 8px auto 16px;
+            }
+        }
+    }
+    &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        height: 300px;
+    }
+    %h-status {
+        position: absolute;
+        top: 3px;
+        right: 3px;
+        width: 17px;
+        height: 17px;
+        z-index: 10;
+    }
+}

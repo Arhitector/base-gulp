@@ -1,0 +1,90 @@
+{
+    "title": "Приглашайте друзей, чтобы сыграть вместе!",
+  "carousel": [
+      {
+          "avatar": "avatar1.jpg",
+          "name": "Йорих Львин",
+          "status": "offline"
+      },{
+          "avatar": "avatar2.jpg",
+          "name": "BigBO$$",
+          "status": "online"
+      },{
+          "avatar": "avatar3.jpg",
+          "name": "BigBO$$",
+          "status": "playing"
+      },{
+          "avatar": "avatar1.jpg",
+          "name": "Йорих Львин",
+          "status": "offline"
+      },{
+          "avatar": "avatar3.jpg",
+          "name": "BigBO$$",
+          "status": "online"
+      },{
+          "avatar": "avatar2.jpg",
+          "name": "BigBO$$",
+          "status": "playing"
+      },{
+          "avatar": "avatar1.jpg",
+          "name": "Йорих Львин",
+          "status": "offline"
+      },{
+          "avatar": "avatar3.jpg",
+          "name": "BigBO$$",
+          "status": "online"
+      },{
+          "avatar": "avatar2.jpg",
+          "name": "BigBO$$",
+          "status": "playing"
+      },{
+          "avatar": "avatar1.jpg",
+          "name": "Йорих Львин",
+          "status": "offline"
+      },{
+          "avatar": "avatar3.jpg",
+          "name": "BigBO$$",
+          "status": "online"
+      },{
+          "avatar": "avatar2.jpg",
+          "name": "BigBO$$",
+          "status": "playing"
+      },{
+          "avatar": "avatar1.jpg",
+          "name": "Йорих Львин",
+          "status": "offline"
+      },{
+          "avatar": "avatar3.jpg",
+          "name": "BigBO$$",
+          "status": "online"
+      },{
+          "avatar": "avatar2.jpg",
+          "name": "BigBO$$",
+          "status": "playing"
+      },{
+          "avatar": "avatar1.jpg",
+          "name": "Йорих Львин",
+          "status": "offline"
+      },{
+          "avatar": "avatar2.jpg",
+          "name": "BigBO$$",
+          "status": "online"
+      },{
+          "avatar": "avatar2.jpg",
+          "name": "BigBO$$",
+          "status": "playing"
+      },{
+          "avatar": "avatar1.jpg",
+          "name": "Йорих Львин",
+          "status": "offline"
+      },{
+          "avatar": "avatar2.jpg",
+          "name": "BigBO$$",
+          "status": "online"
+      },{
+          "avatar": "avatar2.jpg",
+          "name": "BigBO$$",
+          "status": "playing"
+      }
+  ]
+}
