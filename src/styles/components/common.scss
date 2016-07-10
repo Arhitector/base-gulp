@@ -1,0 +1,19 @@
+.va {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.wrapper {
+	max-width: 1000px;
+	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	//background: inline('datauri.png')
+}
+
+div {
+	padding: 0 10px;
+	margin: 10px 0;
+}

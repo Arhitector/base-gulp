@@ -8,7 +8,7 @@ module.exports =  {
 		}
 		return result;
 	},
-	bar: function () {
-		return 2345;
+	extend: function () {
+		return 1234;
 	}
 };

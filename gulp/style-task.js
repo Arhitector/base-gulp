@@ -24,13 +24,24 @@ module.exports = new function () {
 		// 			}
 		// 			return Promise.reject();
 		// 		}
-		// 	};
+		// };
+		var postcssPlugins = [
+			postcssShort,
+			cssnext()
+			// postcss([assets({
+			// 	loadPaths: [cfg.src.img, cfg.src.tempImg, cfg.src.dataUri]
+			// })])
+			//https://github.com/2createStudio/postcss-sprites#spritepath
+			// sprites(postcssSpriteOpts),
+		];
 		return gulp.src(cfg.src.styles + "/all." + cfg.cssBuilder)
 			.pipe(gulpIf(NODE_ENV == 'dev', sourcemaps.init()))
 			.pipe(inject(gulp.src([
 				cfg.src.styles + '/_config_' + NODE_ENV + '.' + cfg.cssBuilder,
+				cfg.src.vendor + '/vendor.' + cfg.cssBuilder,
 				cfg.src.styles + '/helpers/*.' + cfg.cssBuilder,
-				cfg.src.styles + '/**/*.' + cfg.cssBuilder,
+				cfg.src.styles + '/components/*.' + cfg.cssBuilder,
+				cfg.src.styles + '/sprites/*.' + cfg.cssBuilder,
 				cfg.src.markups + '/**/*.' + cfg.cssBuilder
 			], {read: false}), {
 				starttag: '/* inject:imports */',
@@ -39,19 +50,19 @@ module.exports = new function () {
 					return '@import ".' + filepath + '";';
 				}
 			}))
-			.pipe(
-				gulpIf(cfg.cssBuilder == 'less', less(), sass())).on('error', notify.onError(function (error) {
-				return "Error on: " + error.filename + " in " + error.line + ' line';
+			.pipe(plumber({
+				errorHandler: function (err) {
+					console.log(err.plugin);
+					console.log(err.message);
+					this.emit('end');
+				}
 			}))
+			.pipe(
+				gulpIf(cfg.cssBuilder == 'less', less(), sass())
+			)
 			.pipe(base64('../../' + cfg.src.dataUri))
 			.pipe(autoprefixer({browsers: [cfg.autoprefixerBrowserSupport], cascade: true}))
-			.pipe(postcss([
-				postcssShort,
-				cssnext()
-				//https://github.com/2createStudio/postcss-sprites#spritepath
-				// sprites(postcssSpriteOpts),
-
-			]))
+			.pipe(postcss(postcssPlugins))
 			.pipe(csso({
 				restructure: true
 			}))

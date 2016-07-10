@@ -1,6 +1,7 @@
 module.exports = new function () {
 	// Template variables
 	cfg.destTemplate = {
+		'pageTitle': 'Page title',
 		'root' : '../' + cfg.src.root,
         'isDev': true,
 		'cssPath': 'css',

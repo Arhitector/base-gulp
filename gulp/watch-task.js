@@ -5,7 +5,7 @@ module.exports = new function () {
 	return function () {
 		var htmlCompiler = cfg.htmlCompiler;
 		// Watch styles files
-		gulp.watch(cfg.src.root + '/**/*.' + cfg.cssBuilder, ['style', reload]);
+		gulp.watch([cfg.src.styles + '/**/*.' + cfg.cssBuilder, cfg.src.markups + '/**/**/*.' + cfg.cssBuilder], ['style', reload]);
 		// Watch html compiler files
 		gulp.watch(cfg.src.root + '/**/*.' + htmlCompiler, [htmlCompiler, reload]);
 		// js
