@@ -1,7 +1,7 @@
 module.exports = new function () {
 	var uglify = require('gulp-uglify'),
 		jshint = require('gulp-jshint'),
-		inject = require('gulp-inject'),
+		// inject = require('gulp-inject'),
 		babel = require('gulp-babel'),
 		concat = require('gulp-concat'),
 		sourcemaps = require('gulp-sourcemaps');

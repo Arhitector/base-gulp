@@ -78,18 +78,20 @@ gulp.task('watch', ['connect'], function () {
 //     return cache.clearAll(done);
 // });
 gulp.task('clean', function () {
-    return gulp.src(['www', 'prod', cfg.src.styles + '/sprites'], {read: false}).pipe(rimraf());
+    return gulp.src([cfg.dest.root, cfg.src.styles + '/sprites'], {read: false}).pipe(rimraf());
 });
-// gulp.task('cleanAll', function () {
-//     return gulp.src([
-//         'bower_components',
-//         '.sass-cache',
-//         'temp',
-//         'test',
-//         'node_modules'
-//     ], {read: false}).pipe(rimraf());
-//     gulp.start(['cleanCache', 'cleanDest']);
-// });
+gulp.task('cleanAll', function () {
+    return gulp.src([
+        'bower_components',
+        '.sass-cache',
+        'temp',
+        'test',
+        'node_modules',
+		'www',
+		'prod'
+    ], {read: false}).pipe(rimraf());
+    gulp.start(['cleanCache', 'cleanDest']);
+});
 // gulp.task('fonts', function () {
 //     gulp.src(cfg.src.fonts)
 //         .pipe(gulp.dest(cfg.dest.fonts))
