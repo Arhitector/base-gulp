@@ -25,3 +25,7 @@ npm-debug.log
 .idea/*
 *.sublime-project
 .editorconfig
+.idea/
+node_modules/
+www/
+prod/
