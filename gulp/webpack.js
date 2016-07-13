@@ -4,7 +4,6 @@ var webpackStream		= require('webpack-stream'),
 	gulpUtil 			= require('gulp-util'),
 	named				= require('vinyl-named'),
 	reload 				= require('browser-sync').reload;
-var biuldWebpack = false;
 var options = {
 	// context: "./src/markups",
 	entry: {

@@ -15,6 +15,7 @@ Thumbs.db
 /bower_components/*
 /node_modules/*
 /www/*
+/prod/*
 npm-debug.log
 .sass-cache/*
 /tests

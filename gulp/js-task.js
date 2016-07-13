@@ -6,7 +6,7 @@ module.exports = new function () {
 		concat = require('gulp-concat'),
 		sourcemaps = require('gulp-sourcemaps');
 	function getAllJs () {
-		return gulp.src(cfg.src.markups + '/**/*.' + JS_FORMATS)
+		return gulp.src(cfg.src.scripts + '/**/*.' + JS_FORMATS)
 			.pipe(sourcemaps.init())
 			.pipe(babel({
 				presets: ['es2015']
