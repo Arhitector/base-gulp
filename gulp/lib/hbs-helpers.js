@@ -3,12 +3,9 @@ module.exports =  {
 		var result = "";
 		if(item1 < item2) {
 			result = item2;
-		} else {
+		} else if (item1 > item2) {
 			result = item1;
 		}
 		return result;
-	},
-	extend: function () {
-		return 1234;
 	}
 };

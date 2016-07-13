@@ -3,7 +3,7 @@ module.exports = new function () {
 	cfg.destTemplate = {
 		'pageTitle': 'Page title',
 		'root' : '../' + cfg.src.root,
-        'isDev': true,
+        'isDev': cfg.isDev,
 		'cssPath': 'css',
 		'imgPath': '../' + cfg.src.img,
 		'jsPath': 'js',

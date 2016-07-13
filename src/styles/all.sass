@@ -1,8 +1,4 @@
-/* inject:imports */
-/* endinject */
-.new
-	background-image: url('/main/sprite.png')
-.old
-	background-image: url('/main/back.png')
-.some
-	background-image: url('#{$img-path}/images.png')
+@import "../vendor/vendor.sass"
+@import "./helpers/*.sass"
+@import "./**/*.sass"
+@import "../markups/**/*.sass"

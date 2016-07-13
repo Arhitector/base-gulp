@@ -1,7 +1,6 @@
 module.exports = new function () {
     var handlebars = require('handlebars'),
         hb = require('gulp-hb');
-        
 	return function () {
 		hbsHelpers = require('./lib/hbs-helpers');
         return gulp.src(cfg.src.markups + '/*.hbs')

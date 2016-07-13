@@ -1,5 +1,5 @@
 module.exports = new function () {
-	var NODE_ENV = '';
+	global.NODE_ENV = 'dev';
 	global.IMAGE_FORMATS = '{png,gif,jpg,jpeg,svg}';
 	global.JS_FORMATS = '{js,jsx}';
 	global.JS_FORMATS_ARRAY = ['', '.js','.jsx'];

@@ -46,14 +46,13 @@ module.exports = new function () {
 	};
 	// destination
 	cfg.dest = {
-		root: 'www',
+		spritesPath: '../' + cfg.src.sprites,
+		sprites: cfg.src.img + '/sprites',
+		root: './www',
 		get html() {
 			return this.root + '/';
 		},
 		get img() {
-			return this.root + '/img';
-		},
-		get sprites() {
 			return this.root + '/img';
 		},
 		get css() {

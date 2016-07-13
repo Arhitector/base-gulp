@@ -1,25 +1,25 @@
 // common used plugins
 require('./config/consts');
-global._            = require('lodash');
-global.gulp         = require('gulp');
-global.args         = require('yargs').argv;
-// global.gulpSequence = require('gulp-sequence');
+global._			= require('lodash');
+global.gulp			= require('gulp');
+// global.args			= require('yargs').argv;
+global.gulpSequence = require('gulp-sequence');
 // global.glob         = require('glob');
 // global.path         = require('path');
-global.fs           = require('fs');
+global.fs			= require('fs');
 // global.mkdirp       = require('mkdirp');
-// global.rimraf       = require('gulp-rimraf');
+global.rimraf       = require('gulp-rimraf');
 // global.foreach      = require('gulp-foreach');
 // global.gulpIf       = require('gulp-if');
 // global.noop         = require('gulp-util').noop;
-global.notify       = require('gulp-notify');
-global.size         = require('gulp-size');
-global.plumber      = require('gulp-plumber');
-global.rename = require("gulp-rename");
-
+global.notify		= require('gulp-notify');
+global.size			= require('gulp-size');
+global.plumber		= require('gulp-plumber');
+global.rename		= require("gulp-rename");
+global.gulpIf		= require('gulp-if');
 //config
 global.configLoader = require('./config/config-loader');
-configLoader.load(NODE_ENV);
+configLoader.load();
 
 //------------------ TASKS ------------------//
 //styles
@@ -77,9 +77,9 @@ gulp.task('watch', ['connect'], function () {
 // gulp.task('cleanCache', function (done) {
 //     return cache.clearAll(done);
 // });
-// gulp.task('cleanDest', function () {
-//     return gulp.src([cfg.dest.root, cfg.src.styles + '/sprites'], {read: false}).pipe(rimraf());
-// });
+gulp.task('clean', function () {
+    return gulp.src(['www', 'prod', cfg.src.styles + '/sprites'], {read: false}).pipe(rimraf());
+});
 // gulp.task('cleanAll', function () {
 //     return gulp.src([
 //         'bower_components',
@@ -96,14 +96,12 @@ gulp.task('watch', ['connect'], function () {
 // });
 
 //general
-gulp.task('build', ['style', cfg.htmlCompiler, cfg.jsCompiler], function () {});
+gulp.task('build', gulpSequence(['sprite', cfg.htmlCompiler, cfg.jsCompiler], 'style'));
 gulp.task('dev', function () {
     gulp.start('build');
 });
-gulp.task('prod', function () {
-    configLoader.load('prod');
-    gulp.start([ 'build', 'prettify', 'imagemin']);
+gulp.task('prod', function (cb) {
+	configLoader.load('prod');
+	gulpSequence(['build', 'imagemin'], 'prettify')(cb);
 });
-gulp.task('default', ['build'], function () {
-    gulp.start('watch');
-});
+gulp.task('default', gulpSequence('build','watch'));
